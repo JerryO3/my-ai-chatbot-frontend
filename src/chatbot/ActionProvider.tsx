@@ -2,8 +2,8 @@
 import React from 'react';
 
 function ActionProvider(props: { createChatBotMessage: any, setState: any, children: any }) {
-  const handleHello = () => {
-    const botMessage = props.createChatBotMessage('Hello. Nice to meet you.');
+  const respond = (response: string) => {
+    const botMessage = props.createChatBotMessage(response);
 
     props.setState((prev: any) => ({
       ...prev,
@@ -17,7 +17,7 @@ function ActionProvider(props: { createChatBotMessage: any, setState: any, child
       {React.Children.map(props.children, (child) => {
         return React.cloneElement(child, {
           actions: {
-            handleHello,
+            respond,
           },
         });
       })}

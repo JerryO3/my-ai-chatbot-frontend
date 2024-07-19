@@ -1,3 +1,81 @@
+.App {
+  width: 100vw;
+  display: flex;
+}
+
+/*File component*/ 
+
+#filePane {
+  width: 20vw;
+}
+
+.filecontainer {
+  display: flexbox;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  align-content: centers;
+}
+
+.filelist {
+  padding-left: 10px;
+  padding-right: 10px;
+  max-height: 80vh;
+  overflow-y: scroll;
+}
+
+.fileheader {
+  background-color: white;
+  font-family: Arial;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  color: #586F7C;
+  padding: 0 17.5px 0px 17.5px;
+  font-weight: bold;
+  height: 6vh;
+  border-bottom: solid #586F7C 1px;
+}
+
+.deleteallbutton {
+  margin-left: auto;
+  background-color: #fff;
+  border: 1px solid #d5d9d9;
+  border-radius: 8px;
+  box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+  box-sizing: border-box;
+  color: #0f1111;
+  cursor: pointer;
+  font-family:  "Ubuntu";
+  font-size: 15px;
+  line-height: 29px;
+  padding: 0 10px 0 11px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  width: 100px;
+}
+
+.deleteallbutton:hover {
+  background-color: #f7fafa;
+}
+
+.deleteallbutton:focus {
+  border-color: #008296;
+  box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+  outline: 0;
+}
+
+/*Chat Component*/
+
+#chatPane {
+  margin-left: auto;
+}
+
 .react-chatbot-kit-user-chat-message-container {
   display: flex;
   margin: 15px 0;
@@ -78,11 +156,11 @@
 }
 
 .react-chatbot-kit-chat-bot-message {
-  background-color: #2898ec;
+  background-color: #B8DBD9;
   padding: 10px;
   border-radius: 5px;
   font-size: 0.9rem;
-  color: #fff;
+  color: black;
   font-weight: medium;
   position: relative;
   width: 184.5px;
@@ -94,7 +172,7 @@
   height: 0;
   border-top: 8px solid transparent;
   border-bottom: 8px solid transparent;
-  border-right: 8px solid #2898ec;
+  border-right: 8px solid #B8DBD9;
   position: absolute;
   left: -7px;
   top: 13px;
@@ -150,16 +228,16 @@
 }
 
 .react-chatbot-kit-chat-header {
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
-  background-color: #efefef;
   font-family: Arial;
   display: flex;
   align-items: center;
-  font-size: 0.85rem;
-  color: #514f4f;
-  padding: 12.5px;
+  font-size: 1rem;
+  background-color: #586F7C;
+  color: white;
+  padding: 0 17.5px 0px 17.5px;
   font-weight: bold;
+  height: 6vh;
+  border-bottom: solid white 1px;
 }
 
 .react-chatbot-kit-chat-input-container {
@@ -170,9 +248,10 @@
 }
 
 .react-chatbot-kit-chat-message-container {
-  padding: 0 17.5px 10px 17.5px;
+  padding: 0 17.5px 0px 17.5px;
   overflow-y: scroll;
-  height: 90vh;
+  height: 94vh;
+  background-color: #586F7C;
 }
 
 .react-chatbot-kit-chat-input {
@@ -184,6 +263,7 @@
   font-size: 0.85rem;
   border-top: 1px solid #d8d8d8;
   border-bottom-left-radius: 5px;
+  border-radius: 20px;
 }
 
 .react-chatbot-kit-chat-input-form {
@@ -197,7 +277,7 @@
 }
 
 .react-chatbot-kit-chat-btn-send {
-  background-color: #2898ec;
+  background-color: #586F7C;
   width: 100px;
   border: none;
   color: #fff;
@@ -236,4 +316,115 @@
   text-align: center;
   text-decoration: none;
   font-size: 1rem;
+}
+
+/* Upload Components */
+.uploadcomponent {
+  position: absolute;
+  bottom: 0;
+  width: 20vw;
+  padding-bottom: 2.5vh;
+  padding-left: 2.5vw;
+  padding-right: 2.5vw;
+  
+}
+
+.pathbox {
+  border-style: solid;
+  border-radius: 1vh;
+  border-color: #B8DBD9;
+  background: #B8DBD9;
+  color: black;
+  height: fit-content;
+  width: 14vw;
+
+  padding-left: 1vh;
+  padding-right: 1vh;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+}
+
+.sendpathbutton {
+  background-color: #fff;
+  border: 1px solid #d5d9d9;
+  border-radius: 8px;
+  box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+  box-sizing: border-box;
+  color: #0f1111;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Ubuntu";
+  font-size: 18px;
+  line-height: 28px;
+  padding: 0 10px 0 11px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  width: 15vw;
+}
+
+.sendpathbutton:hover {
+  background-color: #f7fafa;
+}
+
+.sendpathbutton:focus {
+  border-color: #008296;
+  box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+  outline: 0;
+}
+
+/*File Button components*/
+.filebutton {
+  height: fit-content;
+  padding-top: 1vh;
+  padding-left: 1vh;
+  padding-right: 1vh;
+  padding-bottom: 1vh;
+  font-size: 0.9vw;
+  border-bottom: 1px solid;
+}
+
+.deletebutton {
+  background-color: #fff;
+  border: 1px solid #d5d9d9;
+  border-radius: 8px;
+  box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+  box-sizing: border-box;
+  color: #0f1111;
+  cursor: pointer;
+  font-family:  "Ubuntu";
+  font-size: 15px;
+  height: fill;
+  padding: 0 10px 0 11px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  width: 100px;
+}
+
+.deletebutton:hover {
+  background-color: #f7fafa;
+}
+
+.deletebutton:focus {
+  border-color: #008296;
+  box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+  outline: 0;
+}
+
+.namebox {
+  padding-bottom: 3px;
+}
+
+.buttonholder {
+  position: relative;
+  padding-top: 10px;
 }

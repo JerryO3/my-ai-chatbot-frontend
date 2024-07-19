@@ -4,6 +4,7 @@ import Chatbot from "react-chatbot-kit";
 import config from "./configs/chatbotConfig";
 import MessageParser from "./chatbot/MessageParser";
 import ActionProvider from "./chatbot/ActionProvider";
+import { FileContainer } from './FileContainer';
 
 function App() {
   // console.log(document.getElementsByClassName("react-chatbot-kit-chat-input").item(0)?.addEventListener())
@@ -12,11 +13,16 @@ function App() {
 
   return (
     <div className="App">
-      <Chatbot
-        config={config}
-        messageParser={MessageParser}
-        actionProvider={ActionProvider}
-      />
+      <div id='filePane'>
+        <FileContainer></FileContainer>
+      </div>
+      <div id='chatPane'>
+        <Chatbot
+            config={config}
+            messageParser={MessageParser}
+            actionProvider={ActionProvider}
+          />
+      </div>
     </div>
   );
 }
