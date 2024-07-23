@@ -39,7 +39,7 @@ export function sendQuery(query: string, getBotMessage: (arg: string) => any, ad
         "use_context": true,
         "include_sources": true}
 
-    fetch(server + "/submit-query",
+    fetch(server + "/submit-query/",
         {
         method: "POST",
         headers: {

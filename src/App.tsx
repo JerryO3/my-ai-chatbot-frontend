@@ -6,7 +6,7 @@ import MessageParser from "./chatbot/MessageParser";
 import ActionProvider from "./chatbot/ActionProvider";
 import { FileContainer } from './FileContainer';
 
-export const server = 'http://localhost:8001'
+export const server = 'http://localhost:8000'
 
 function App() {
 

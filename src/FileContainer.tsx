@@ -3,6 +3,8 @@ import { FileButton } from './fileContainerComponents/FileButton';
 import { UploadComponent } from './fileContainerComponents/UploadComponent';
 import { server } from './App';
 
+// let server = "http://localhost:8001"
+
 export function FileContainer() {
     // using timer because not sure how to link refresh to delete 
     const [state, setState] = useState({num: 0});
@@ -17,7 +19,7 @@ export function FileContainer() {
     useEffect(() => {
       fetch(server + "/get-file-list", {method: "GET"})
       .then(response => response.json())
-      .then(json => setDocList(json["data"]))
+      .then(json => setDocList(json["doc_list"]))
       .catch(error => console.error(error));
     }, [state])
 
@@ -33,7 +35,8 @@ export function FileContainer() {
             </div>
             <div className='filelist'>
                 {
-                    getFilenames(currDocList).map(x => FileButton({filename: x, doc_id: getIDs(currDocList, x)}))
+                    currDocList.map(x => FileButton({filename: x, doc_id: "123"}))
+                    // getFilenames(currDocList).map(x => FileButton({filename: x, doc_id: getIDs(currDocList, x)}))
                 }
             </div>
             <div>
@@ -42,7 +45,6 @@ export function FileContainer() {
         </div>
     )
 }
-
 
 // TODO: extract all these logic into proxy server
 
@@ -89,7 +91,21 @@ function deleteAllDocuments(obj: Object) {
 
 // TODO: Change endpoint to point towards proxy server (can remain for now because it is dead simple)
 export function deleteHelper(doc_id: string) {
-    fetch("http://localhost:8001/v1/ingest/" + doc_id, {method: "DELETE"})
-    .then(response => console.log(response))
+    // fetch("http://localhost:8001/v1/ingest/" + doc_id, {method: "DELETE"})
+    // .then(response => console.log(response))
+    // .catch(error => console.error(error));
+    const obj = {"doc_name": "doc_id"}
+
+    fetch(server + "/delete/",
+        {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(obj)
+        }
+    )
+    .then(response => response.json())
+    .then(json => console.log(json))
     .catch(error => console.error(error));
 }
