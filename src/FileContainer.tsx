@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { FileButton } from './fileContainerComponents/FileButton';
 import { UploadComponent } from './fileContainerComponents/UploadComponent';
+import { server } from './App';
 
 export function FileContainer() {
     // using timer because not sure how to link refresh to delete 
@@ -14,7 +15,7 @@ export function FileContainer() {
     // TODO: Change endpoint to point towards proxy server
     const [currDocList, setDocList] = useState([])
     useEffect(() => {
-      fetch("http://localhost:8001/v1/ingest/list", {method: "GET"})
+      fetch(server + "/get-file-list", {method: "GET"})
       .then(response => response.json())
       .then(json => setDocList(json["data"]))
       .catch(error => console.error(error));
@@ -86,7 +87,7 @@ function deleteAllDocuments(obj: Object) {
     let out = Object.values(obj).map(y => deleteHelper(y["doc_id"]))
 }
 
-// TODO: Change endpoint to point towards proxy server
+// TODO: Change endpoint to point towards proxy server (can remain for now because it is dead simple)
 export function deleteHelper(doc_id: string) {
     fetch("http://localhost:8001/v1/ingest/" + doc_id, {method: "DELETE"})
     .then(response => console.log(response))

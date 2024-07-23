@@ -1,9 +1,15 @@
 // MessageParser starter code
-import React from 'react';
+import React from 'react'
 
 function MessageParser(props: { children: any, actions: any }) {
-  document.getElementsByClassName("react-chatbot-kit-chat-input").item(0)?.addEventListener("onkeydown", (e) => {/* call send function */});
-  document.getElementsByClassName("react-chatbot-kit-chat-input").item(0)?.addEventListener("onkeydown", (e) => {/* clear chat history function */});
+
+  // document.getElementsByClassName("react-chatbot-kit-chat-input").item(0)?.addEventListener("keydown", (e) => { 
+  //   let input = document.getElementsByClassName("react-chatbot-kit-chat-input").item(0)?.textContent
+  //   if ((e as KeyboardEvent).key === "Enter" && typeof input === "string") {
+  //     parse(input);
+  //     (document.getElementsByClassName("react-chatbot-kit-chat-input").item(0) as HTMLTextAreaElement).value = ""
+  //   }
+  // });
   const parse = (message: string) => {
     // TODO: add request to proxy server
     props.actions.respond(message)

@@ -6,10 +6,13 @@ import MessageParser from "./chatbot/MessageParser";
 import ActionProvider from "./chatbot/ActionProvider";
 import { FileContainer } from './FileContainer';
 
-function App() {
-  // console.log(document.getElementsByClassName("react-chatbot-kit-chat-input").item(0)?.addEventListener())
+export const server = 'http://localhost:8001'
 
-  // document.getElementsByClassName("react-chatbot-kit-chat-input").item(0).on
+function App() {
+
+  const validator = (input: string) => {
+    return input !== ""
+  }
 
   return (
     <div className="App">
@@ -21,6 +24,7 @@ function App() {
             config={config}
             messageParser={MessageParser}
             actionProvider={ActionProvider}
+            validator={validator}
           />
       </div>
     </div>

@@ -21,7 +21,7 @@ export function UploadComponent() {
     )
 }
 
-// TODO: Change endpoint to point towards proxy server
+// TODO: Change endpoint to point towards proxy server (can maintain for now because it is dead simple)
 
 function uploadDocuments(fileList: HTMLInputElement) {
     if (typeof fileList.files == "undefined" || fileList.files!.length > 0) {
