@@ -11,6 +11,7 @@ export function FileContainer() {
     //   }, [state]);
     // to refactor
 
+    // TODO: Change endpoint to point towards proxy server
     const [currDocList, setDocList] = useState([])
     useEffect(() => {
       fetch("http://localhost:8001/v1/ingest/list", {method: "GET"})
@@ -85,7 +86,7 @@ function deleteAllDocuments(obj: Object) {
     let out = Object.values(obj).map(y => deleteHelper(y["doc_id"]))
 }
 
-//TODO: change address to point to proxy server
+// TODO: Change endpoint to point towards proxy server
 export function deleteHelper(doc_id: string) {
     fetch("http://localhost:8001/v1/ingest/" + doc_id, {method: "DELETE"})
     .then(response => console.log(response))
