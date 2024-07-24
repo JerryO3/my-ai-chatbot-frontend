@@ -163,7 +163,8 @@
   color: black;
   font-weight: medium;
   position: relative;
-  width: 184.5px;
+  width: fit-content;
+  max-width: 60vw;
   text-align: left;
 }
 

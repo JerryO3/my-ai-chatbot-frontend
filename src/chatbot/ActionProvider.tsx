@@ -48,7 +48,7 @@ export function sendQuery(query: string, getBotMessage: (arg: string) => any, ad
         body: JSON.stringify(obj)
         }
     )
-    .then(response => {console.log(1); return response.json()})
+    .then(response => {let obj = response.json(); console.log(obj); return obj})
     .then(json => parseResponse(json))
     .then(response => getBotMessage(response))
     .then(msg => addToHistory(msg))

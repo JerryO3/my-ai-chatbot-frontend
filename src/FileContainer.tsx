@@ -8,10 +8,10 @@ import { server } from './App';
 export function FileContainer() {
     // using timer because not sure how to link refresh to delete 
     const [state, setState] = useState({num: 0});
-    // useEffect(() => {
-    //     const timer = setTimeout(() => setState({ num: state.num + 1 }), 1000);
-    //     return () => clearTimeout(timer);
-    //   }, [state]);
+    useEffect(() => {
+        const timer = setTimeout(() => setState({ num: state.num + 1 }), 1000);
+        return () => clearTimeout(timer);
+      }, [state]);
     // to refactor
 
     // TODO: Change endpoint to point towards proxy server
@@ -65,7 +65,7 @@ function deleteAllDocuments(obj: Object) {
 
 // TODO: Change endpoint to point towards proxy server (can remain for now because it is dead simple)
 export function deleteHelper(doc_id: string) {
-    const obj = {"doc_name": doc_id}
+    const obj = {"doc_id": doc_id}
 
     fetch(server + "/delete/",
         {
