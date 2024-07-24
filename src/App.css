@@ -235,7 +235,7 @@
   font-size: 1rem;
   background-color: #586F7C;
   color: white;
-  padding: 0 17.5px 0px 17.5px;
+  padding: 0px 17.5px 0px 17.5px;
   font-weight: bold;
   height: 6vh;
   border-bottom: solid white 1px;
@@ -249,9 +249,9 @@
 }
 
 .react-chatbot-kit-chat-message-container {
-  padding: 0 17.5px 0px 17.5px;
+  padding: 0px 17.5px 30vh 17.5px;
   overflow-y: scroll;
-  height: 94vh;
+  height: 64vh;
   background-color: #586F7C;
 }
 
