@@ -1,3 +1,5 @@
+import { server } from "../App";
+
 export function UploadComponent() {
 
     return (
@@ -35,11 +37,15 @@ function uploadDocuments(fileList: HTMLInputElement) {
             // Add file in the FormData
             myData.append("file", file);
 
-            fetch("http://localhost:8001/v1/ingest/file", {
+            fetch(server + "/upload-document/", {
                 // POST request with Fetch API
                 method: "POST", 
                 // Adding FormData to the request
                 body: myData
+             })
+             .then((obj) => {let data = obj.json(); 
+                console.log(data); 
+                data.then(x => console.log(x))
              })
         }
     )
