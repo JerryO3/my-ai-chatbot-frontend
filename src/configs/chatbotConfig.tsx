@@ -1,4 +1,3 @@
-// Config starter code
 import { createChatBotMessage } from "react-chatbot-kit";
 
 let bot: string = "Unknown Model"

@@ -23,8 +23,6 @@ export function UploadComponent(props: {setState: React.Dispatch<React.SetStateA
     )
 }
 
-// TODO: Change endpoint to point towards proxy server (can maintain for now because it is dead simple)
-
 function uploadDocuments(fileList: HTMLInputElement, setState: React.Dispatch<React.SetStateAction<{}>>) {
     if (typeof fileList.files == "undefined" || fileList.files!.length > 0) {
         // guard clause

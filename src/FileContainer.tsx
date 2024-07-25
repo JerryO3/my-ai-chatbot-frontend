@@ -36,8 +36,6 @@ export function FileContainer() {
     )
 }
 
-// TODO: extract all these logic into proxy server
-
 function handleDocuments(currDocList: Object, setStateFn: React.Dispatch<React.SetStateAction<{}>>) {
     if (currDocList.hasOwnProperty("doc_list")) {
         return Object.keys((currDocList as any)["doc_list"]).map(x => FileButton({filename: x, doc_id: (currDocList as any)["doc_list"][x], setState: setStateFn}))
@@ -50,7 +48,6 @@ function deleteAllDocuments(obj: Object) {
     }
 }
 
-// TODO: Change endpoint to point towards proxy server (can remain for now because it is dead simple)
 export function deleteHelper(doc_id: string) {
     const obj = {"doc_id": doc_id}
 
