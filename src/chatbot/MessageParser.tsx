@@ -1,5 +1,10 @@
 import React from 'react'
 
+/**
+ * Use this component to configure the ruleset of the parse method.
+ * It takes in the user message and can be configured to take different
+ * actions as defined in ActionProvider.
+ */
 function MessageParser(props: { children: any, actions: any }) {
 
   const parse = (message: string) => {

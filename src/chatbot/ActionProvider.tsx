@@ -1,6 +1,10 @@
 import React from 'react';
 import { server } from '../App';
 
+/**
+ * Use this component to add bot response actions to the initial message as
+ * parsed by MessageParser.
+ */
 function ActionProvider(props: { createChatBotMessage: any, setState: any, children: any }) {
   const respond = (response: string) => {
     const getBotMessage = (response: string) => props.createChatBotMessage(response);
@@ -14,7 +18,6 @@ function ActionProvider(props: { createChatBotMessage: any, setState: any, child
 
   };
 
-  // Put the handleHello function in the actions object to pass to the MessageParser
   return (
     <div>
       {React.Children.map(props.children, (child) => {
@@ -30,7 +33,16 @@ function ActionProvider(props: { createChatBotMessage: any, setState: any, child
 
 export default ActionProvider;
 
-
+/**
+ * Sends the query with the configurations set in the obj variable. 
+ * The obj variable ensures that uploaded documents are referenced,
+ * sources are included and the response is returned as a single message.
+ * @param query is a string representing the query sent to bot.
+ * @param getBotMessage is a function that creates a message on the UI 
+ * that is called once the response from server is received.
+ * @param addToHistory is a function that adds the message to message 
+ * history once the response from server is received.
+ */
 export function sendQuery(query: string, getBotMessage: (arg: string) => any, addToHistory: (arg: any) => any) {
   if (query.trim() !== "") {
     const obj = {"prompt": query,
@@ -48,13 +60,9 @@ export function sendQuery(query: string, getBotMessage: (arg: string) => any, ad
         }
     )
     .then(response => {let obj = response.json(); console.log(obj); return obj})
-    .then(json => parseResponse(json))
+    .then(json => json.toString())
     .then(response => getBotMessage(response))
     .then(msg => addToHistory(msg))
     .catch(error => console.error(error));
   }
-}
-
-export function parseResponse(json: Object) {
-  return json.toString()
 }
