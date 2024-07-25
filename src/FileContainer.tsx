@@ -4,15 +4,8 @@ import { UploadComponent } from './fileContainerComponents/UploadComponent';
 import { server } from './App';
 
 export function FileContainer() {
-    // using timer because not sure how to link refresh to delete 
-    const [state, setState] = useState({num: 0});
-    useEffect(() => {
-        const timer = setTimeout(() => setState({ num: state.num + 1 }), 1000);
-        return () => clearTimeout(timer);
-      }, [state]);
-    // to refactor
+    const [state, setState] = useState({});
 
-    // TODO: Change endpoint to point towards proxy server
     const [currDocList, setDocList] = useState({})
     useEffect(() => {
       fetch(server + "/get-file-list", {method: "GET"})
@@ -33,11 +26,11 @@ export function FileContainer() {
             </div>
             <div className='filelist'>
                 {
-                    handleDocuments(currDocList)
+                    handleDocuments(currDocList, setState)
                 }
             </div>
             <div>
-                <UploadComponent></UploadComponent>
+                <UploadComponent setState={setState}></UploadComponent>
             </div>
         </div>
     )
@@ -45,9 +38,9 @@ export function FileContainer() {
 
 // TODO: extract all these logic into proxy server
 
-function handleDocuments(currDocList: Object) {
+function handleDocuments(currDocList: Object, setStateFn: React.Dispatch<React.SetStateAction<{}>>) {
     if (currDocList.hasOwnProperty("doc_list")) {
-        return Object.keys((currDocList as any)["doc_list"]).map(x => FileButton({filename: x, doc_id: (currDocList as any)["doc_list"][x]}))
+        return Object.keys((currDocList as any)["doc_list"]).map(x => FileButton({filename: x, doc_id: (currDocList as any)["doc_list"][x], setState: setStateFn}))
     }
 }
 

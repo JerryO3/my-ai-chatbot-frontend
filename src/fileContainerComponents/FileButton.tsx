@@ -1,6 +1,6 @@
 import { deleteHelper } from '../FileContainer'
 
-export function FileButton(props: {filename: string, doc_id: Object}) {
+export function FileButton(props: {filename: string, doc_id: Object, setState: React.Dispatch<React.SetStateAction<{}>>}) {
     return (
         <div id={props.filename} className='filebutton'>
             <div className='namebox'>
@@ -8,7 +8,8 @@ export function FileButton(props: {filename: string, doc_id: Object}) {
             </div>
             <button 
                 className='deletebutton'
-                onClick={() => {deleteDocument(props.doc_id); 
+                onClick={() => {
+                    deleteDocument(props.doc_id).then(x => props.setState({x})); 
                 }}>
                 Delete
             </button>
@@ -16,7 +17,7 @@ export function FileButton(props: {filename: string, doc_id: Object}) {
     )
 }
 
-function deleteDocument(doc_id: Object) {
+async function deleteDocument(doc_id: Object) {
     return Array.isArray(doc_id) ? doc_id.forEach(x => deleteHelper(x)) : null
 }
 

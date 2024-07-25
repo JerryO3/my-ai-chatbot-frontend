@@ -1,6 +1,6 @@
 import { server } from "../App";
 
-export function UploadComponent() {
+export function UploadComponent(props: {setState: React.Dispatch<React.SetStateAction<{}>>}) {
 
     return (
         <div className='uploadcomponent'>
@@ -14,7 +14,7 @@ export function UploadComponent() {
             <div className='buttonholder'>
                 <button 
                     className='sendpathbutton'
-                    onClick={() => uploadDocuments((document.getElementById("pathbox") as HTMLInputElement))}
+                    onClick={() => uploadDocuments((document.getElementById("pathbox") as HTMLInputElement), props.setState)}
                 >
                     Upload Files
                 </button>
@@ -25,7 +25,7 @@ export function UploadComponent() {
 
 // TODO: Change endpoint to point towards proxy server (can maintain for now because it is dead simple)
 
-function uploadDocuments(fileList: HTMLInputElement) {
+function uploadDocuments(fileList: HTMLInputElement, setState: React.Dispatch<React.SetStateAction<{}>>) {
     if (typeof fileList.files == "undefined" || fileList.files!.length > 0) {
         // guard clause
     }
@@ -43,9 +43,9 @@ function uploadDocuments(fileList: HTMLInputElement) {
                 // Adding FormData to the request
                 body: myData
              })
-             .then((obj) => {let data = obj.json(); 
-                console.log(data); 
-                data.then(x => console.log(x))
+             .then((obj) => {
+                let data = obj.json(); 
+                data.then(x => setState(x))
              })
         }
     )
