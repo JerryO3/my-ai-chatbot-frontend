@@ -1,4 +1,4 @@
-import { server } from "../App";
+import { server } from "../../App";
 
 export function UploadComponent(props: {setState: React.Dispatch<React.SetStateAction<{}>>}) {
 

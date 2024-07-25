@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { FileButton } from './fileContainerComponents/FileButton';
 import { UploadComponent } from './fileContainerComponents/UploadComponent';
-import { server } from './App';
+import { server } from '../App';
 
 export function FileContainer() {
     const [state, setState] = useState({});

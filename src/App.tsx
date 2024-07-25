@@ -4,7 +4,7 @@ import Chatbot from "react-chatbot-kit";
 import config from "./configs/chatbotConfig";
 import MessageParser from "./chatbot/MessageParser";
 import ActionProvider from "./chatbot/ActionProvider";
-import { FileContainer } from './FileContainer';
+import { FileContainer } from './filepanel/FileContainer';
 
 export const server = 'http://localhost:8000'
 
