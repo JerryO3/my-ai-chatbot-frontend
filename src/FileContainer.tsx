@@ -3,8 +3,6 @@ import { FileButton } from './fileContainerComponents/FileButton';
 import { UploadComponent } from './fileContainerComponents/UploadComponent';
 import { server } from './App';
 
-// let server = "http://localhost:8001"
-
 export function FileContainer() {
     // using timer because not sure how to link refresh to delete 
     const [state, setState] = useState({num: 0});
@@ -18,10 +16,8 @@ export function FileContainer() {
     const [currDocList, setDocList] = useState({})
     useEffect(() => {
       fetch(server + "/get-file-list", {method: "GET"})
-      .then(response => {let obj = response.json(); obj.then(x => console.log(x)); return obj})
-      .then(json => {setDocList(json); console.log(currDocList)})
-      .then(() => console.log(currDocList))
-    //   .then(json => setDocList(json["doc_list"]))
+      .then(response => response.json())
+      .then(json => setDocList(json))
       .catch(error => console.error(error));
     }, [state])
 
@@ -37,9 +33,7 @@ export function FileContainer() {
             </div>
             <div className='filelist'>
                 {
-                    // currDocList.map(x => FileButton({filename: x, doc_id: "123"}))
                     handleDocuments(currDocList)
-                    // getFilenames(currDocList).map(x => FileButton({filename: x, doc_id: getIDs(currDocList, x)}))
                 }
             </div>
             <div>

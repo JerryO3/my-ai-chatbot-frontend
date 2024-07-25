@@ -113,6 +113,7 @@
   text-wrap: wrap;
   overflow-wrap: break-word;
   margin: 0px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .react-chatbot-kit-user-chat-message-arrow {
@@ -168,6 +169,9 @@
   max-width: 60vw;
   text-align: left;
   margin: 0px;
+  text-wrap: wrap;
+  overflow-wrap: break-word;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .react-chatbot-kit-chat-bot-message-arrow {
